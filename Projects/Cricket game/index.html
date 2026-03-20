@@ -13,96 +13,11 @@
 <body>
     <h1>Bat Ball Stump Game</h1>
     <br>
-    <button onclick="
     
-    console.log('you have choosen Bat');
-    let randomNumber= Math.random()*3;
-    let computerChoice;
-    if(randomNumber>0 && randomNumber<=1){
-         computerChoice = 'Bat';
-    }
-    else if (randomNumber>1 && randomNumber<=2 ){
-         computerChoice = 'Ball';
-    }
-    else {
-         computerChoice = 'Stump';
-    }
-    
+    <button onclick="game('Bat')">Bat</button>
+    <button onclick="game('Ball')">Ball</button>
+    <button onclick="game('Stump')">Stump</button>
 
-    let resultMsg ;
-    if (computerChoice === 'Ball'){
-        resultMsg= `user won`;
-    }
-    else if(computerChoice ==='Bat') {
-        resultMsg= ` it's a tie`
-    }
-    else if (computerChoice ==='Stump'){
-        resultMsg= `computer won`
-    }
-
-    alert(`you have chosen bat . computer choice is ${computerChoice} and ${resultMsg}`);
-    " >Bat</button>
-    <button onclick="
-    
-    console.log('you have choosen Ball');
-    randomNumber= Math.random()*3;
-    
-    if(randomNumber>0 && randomNumber<=1){
-         computerChoice = 'Bat';
-    }
-    else if (randomNumber>1 && randomNumber<=2 ){
-         computerChoice = 'Ball';
-    }
-    else {
-         computerChoice = 'Stump';
-    }
-    
-
-    
-    if (computerChoice === 'Ball'){
-        resultMsg= `it's a tie`;
-    }
-    else if(computerChoice ==='Bat') {
-        resultMsg= ` computer won `
-    }
-    else if (computerChoice ==='Stump'){
-        resultMsg= `user won`
-    }
-
-    alert(`you have chosen ball . computer choice is ${computerChoice} and ${resultMsg}`);
-    "
-     >ball</button>
-    <button 
-     onclick="
-    
-    console.log('you have choosen Stump');
-    randomNumber= Math.random()*3;
-    
-    if(randomNumber>0 && randomNumber<=1){
-         computerChoice = 'Bat';
-    }
-    else if (randomNumber>1 && randomNumber<=2 ){
-         computerChoice = 'Ball';
-    }
-    else {
-         computerChoice = 'Stump';
-    }
-    
-
-    
-    if (computerChoice === 'Ball'){
-        resultMsg= `computer won `;
-    }
-    else if(computerChoice ==='Bat') {
-        resultMsg= ` user won `
-    }
-    else if (computerChoice ==='Stump'){
-        resultMsg= `it's a tie`
-    }
-
-    alert(`you have chosen stump . computer choice is ${computerChoice} and ${resultMsg}`);
-    ">stump</button>
-    
-
+    <script src="script.js"></script>
 </body>
 </html>
