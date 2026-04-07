@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Press the Button</title>
+    <style>
+        #my-button{
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+    <button id="my-button" onclick="pressed()">click me</button>
+    <h3 id="msg">Press this Button</h3>
+    <script>
+        let butPressed=0;
+        function pressed(){
+            butPressed++;
+            let button=document.querySelector('#my-button');
+            
+            document.querySelector('#msg').textContent=`Button pressed ${butPressed} times`;
+            if(butPressed%2===0){
+
+            }
+        }
+    </script>
+</body>
+</html>
