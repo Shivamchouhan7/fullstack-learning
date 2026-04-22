@@ -34,3 +34,9 @@ console.log("Squares of numbers:",squares);
 // .filter()
 let evenNumbers= numbers.filter(num=>num%2===0);
 console.log("Even numbers:",evenNumbers);
+
+// .forEach()
+console.log("Numbers:");
+let sum=0;
+numbers.forEach(num=>sum+=num);
+console.log("Sum of numbers:",sum);
