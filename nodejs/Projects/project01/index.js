@@ -1,8 +1,11 @@
 const express=require('express');
+const fs=require('fs');
 const app=express();
 const users=require("./MOCK_DATA.json");
 const PORT=8000;
 
+//Middleware
+app.use(express.urlencoded({extended:false}));
 //Routes
 
 app.get('/users',(req,res)=>{
@@ -40,11 +43,45 @@ app.route('/api/users/:id')
     
     return res.json(user);
 })
-.patch((req,res)=>{
-    // To Edit the user
-    return res.json({status:"pending"});
+.patch((req, res) => {
+
+    const id = Number(req.params.id);
+    const body = req.body;
+
+    const index = users.findIndex(
+        (user) => user.id === id
+    );
+    if (index === -1) {
+        return res.status(404).json({
+            status: "User not found"
+        });
+    }
+    users[index] = {
+        ...users[index],
+        ...body
+    };
+    fs.writeFile(
+        "./MOCK_DATA.json",
+        JSON.stringify(users),
+        (err) => {
+
+            if (err) {
+                return res.status(500).json({
+                    status: "Failed to update user"
+                });
+            }
+
+            return res.json({
+                status: "Success",
+                message: "User updated successfully",
+                user: users[index]
+            });
+
+        }
+    );
+
 })
-.delete('/api/users/:id',(req,res)=>{
+.delete((req,res)=>{
     // To Delete the user
     return res.json({status:"pending"});
 });
@@ -53,7 +90,12 @@ app.route('/api/users/:id')
 
 app.post('/api/users',(req,res)=>{
     //To create new user
-    return res.json({status:"pending"});
+    const body=req.body;
+    users.push({...body,id:users.length+1});
+    fs.writeFile('./MOCK_DATA.json',JSON.stringify(users),(err,data)=>{
+        return res.json({status:"Success",id:users.length});
+    });
+    
 });
 
 
