@@ -6,6 +6,7 @@ const PORT=8000;
 
 //Middleware
 app.use(express.urlencoded({extended:false}));
+app.use(express.json());
 //Routes
 
 app.get('/users',(req,res)=>{
@@ -40,7 +41,11 @@ app.route('/api/users/:id')
 .get((req,res)=>{
     const id=Number(req.params.id);
     const user=users.find((user)=>user.id===id);
-    
+    if(!user){
+        return res.status(404).json({
+            status:"User not found"
+        });
+    }
     return res.json(user);
 })
 .patch((req, res) => {
@@ -62,7 +67,7 @@ app.route('/api/users/:id')
     };
     fs.writeFile(
         "./MOCK_DATA.json",
-        JSON.stringify(users),
+        JSON.stringify(users, null, 2),
         (err) => {
 
             if (err) {
@@ -83,7 +88,27 @@ app.route('/api/users/:id')
 })
 .delete((req,res)=>{
     // To Delete the user
-    return res.json({status:"pending"});
+    const id=Number(req.params.id);
+    const index=users.findIndex(
+        user=>user.id===id
+    );
+    if(index===-1){
+        return res.status(404).json({status:"User not Found"});
+    }
+    users.splice(index,1);
+    fs.writeFile('./MOCK_DATA.json',JSON.stringify(users,null,2),(err)=>{
+        if(err){
+            return res.status(500).json({
+                status:"Failed to delete user "
+            });
+        }
+        
+        return res.json({
+                status:'success',
+                message:`User with id :${id} deleted successfully `
+        });
+        
+    });
 });
 
 
@@ -91,9 +116,20 @@ app.route('/api/users/:id')
 app.post('/api/users',(req,res)=>{
     //To create new user
     const body=req.body;
-    users.push({...body,id:users.length+1});
-    fs.writeFile('./MOCK_DATA.json',JSON.stringify(users),(err,data)=>{
-        return res.json({status:"Success",id:users.length});
+    users.push({id:users.length+1,...body});
+    fs.writeFile('./MOCK_DATA.json',JSON.stringify(users,null,2),(err,data)=>{
+        if(err){
+            return res.status(500).json({
+                status:"Failed to create user"
+            });
+        }
+        
+        return res.status(201).json({
+                status:"Success",
+                message:"User created successfully",
+                user:body
+        });
+        
     });
     
 });
