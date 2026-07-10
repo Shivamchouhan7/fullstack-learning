@@ -17,6 +17,8 @@ app.get('/users',(req,res)=>{
     return res.send(html);
 });
 app.get('/api/users',(req,res)=>{
+    res.setHeader('X-MyName','Shivam Chouhan');//custom header
+    // Always add X in front of custom header name
     return res.json(users);
 });
 
