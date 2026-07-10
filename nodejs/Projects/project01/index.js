@@ -5,8 +5,8 @@ const users=require("./MOCK_DATA.json");
 const PORT=8000;
 
 //Middleware
-app.use(express.urlencoded({extended:false}));
-app.use(express.json());
+app.use(express.urlencoded({extended:false}));//to parse the incoming request body as urlencoded data
+app.use(express.json());//to parse the incoming request body as JSON
 //Routes
 
 app.get('/users',(req,res)=>{
