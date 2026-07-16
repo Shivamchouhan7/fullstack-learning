@@ -1,0 +1,20 @@
+
+1784184025259 $(req.method}: /api/users
+
+1784184154877 GET: /api/users
+
+1784184235617 GET: /api/users
+
+1784184298844 POST: /api/users
+
+1784184329255 GET: /api/users
+
+1784184341867 DELETE: /api/users/6a587dea8ebac490796ae593
+
+1784184352335 GET: /api/users/6a587dea8ebac490796ae593
+
+1784184365349 GET: /api/users/6a527691ed44edbfe07a9f20
+
+1784184392690 PATCH: /api/users/6a527691ed44edbfe07a9f20
+
+1784184399169 PATCH: /api/users/6a527691ed44edbfe07a9f20
