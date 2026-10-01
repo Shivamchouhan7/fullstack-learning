@@ -1,0 +1,13 @@
+Functional Programming Language Concept
+========================================
+1) First Class functions
+  i)Function will be treated as variable.
+  ii) function can be pass as an argument
+  ii) function can be return as a value
+2) Higher Order functions
+    i) Function that accept another function as arg
+    ii) Function that return another function
+    iii) or both
+3) Function composition
+4) Immutaibility
+5) Pure Function
