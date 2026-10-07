@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <button id="save">Save Data</button>
+    
+    <script>
+        let tm;
+        document.getElementById("save").addEventListener("click",()=>{
+            clearTimeout(tm);
+            tm=setTimeout(()=>{
+                console.log("saved successfully..")
+            },2000);
+        }) 
+    </script>
+    </body>
+</html>
