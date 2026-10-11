@@ -1,11 +1,20 @@
-const {}=require("../service/auth");
+const {getUser}=require("../service/auth");
 async function restrictTologgedInUserOnly(req,res,next){
     const userUid=req.cookies.uid;
-    if(!userId) return res.redirect("/login");
+    if(!userUid) return res.redirect("/login");
     const user=await getUser(userUid);
     if(!user) return res.redirect("/login");
     req.user=user;
     next();
 }
+async function checkAuth(req,res,next){
+    const userUid=req.cookies.uid;
+    const user=getUser(userUid);
+    req.user=user;
+    next();
 
-module.exports={restrictTologgedInUserOnly};
+}
+
+module.exports={restrictTologgedInUserOnly,
+    checkAuth
+};
