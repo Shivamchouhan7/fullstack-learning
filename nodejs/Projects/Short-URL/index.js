@@ -1,9 +1,13 @@
 const express=require('express');
 const {connectToMongoDB}=require('./connect');
+const {restrictTologgedInUserOnly,checkAuth}=require('./middlewares/auth');
 const URL=require('./models/url');
-const staticRouter=require('./routes/staticRouter');
+const cookieParser=require('cookie-parser');
+
 const path=require("path");
 const urlRoute=require('./routes/url');
+const staticRouter=require('./routes/staticRouter');
+const userRoute=require('./routes/user');
 
 
 const app=express();
@@ -22,8 +26,10 @@ app.set("views",path.resolve("./views"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/url',urlRoute);
-app.use('/',staticRouter);
+app.use(cookieParser());
+app.use('/url',restrictTologgedInUserOnly,urlRoute);
+app.use('/user',userRoute);
+app.use('/',checkAuth,staticRouter);
 
 // problem: why we need the ejs
 
