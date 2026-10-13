@@ -8,7 +8,7 @@ const personSchema=new mongoose.Schema({
     filetype:String,
     filepath:String
 
-    // filedata:Buffer //To store the data in the database
+    // filedata:Buffer //To store the data in the database 
 });
 
 const Person=mongoose.model("Person",personSchema);
