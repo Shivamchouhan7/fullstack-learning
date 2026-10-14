@@ -1,10 +1,14 @@
 const router=require('express').Router();
 const MyUser=require('../schemas/myUserSchema');
+const {generateToken}=require("../utils/jwtoken")
 
 router.post('/register',async(req,res)=>{
     try{
-        await MyUser.create(req.body);
-        res.json({msg:"user registered successfully"});
+        const username=req.body.username;
+    const password=req.body.password;
+    const role=req.body.role;
+    await MyUser.create({username,password,role});
+    res.json({msg:"User registered Successfully...."});
 
     }
     catch(err){
