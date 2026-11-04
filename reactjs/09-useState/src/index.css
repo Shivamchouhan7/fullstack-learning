@@ -1,0 +1,33 @@
+*{
+  margin:0;
+  padding:0;
+  font-family: 'Poppins', sans-serif;
+}
+html,body{
+  height:100%;
+  width:100%;
+}
+h1{
+  padding: 10px 80px;
+  border-radius: 20px;
+
+  margin: 8px;
+  font-size: 100px;
+  width:fit-content;
+  background-color: #6b796c;
+  color:white;
+}
+#btn1{
+  border:none;
+  border-radius: 10px;
+  background-color: #1fc121;
+  padding:10px 20px;
+  margin: 8px;
+}
+#btn2{
+  border:none;
+  border-radius: 10px;
+  background-color: #ed1616;
+  padding:10px 20px;
+  margin: 8px;
+}
